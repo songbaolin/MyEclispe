@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ==================代理方式=================
+由mapper标签开始，由/mapper结束，可以把它想成一个空间，是映射文件
+属性namespace：空间名，主要在代理中使用。这个namespace是唯一的。
+这里把mapper标签和接口联系在一起了，namespace=写接口路径，映射文件要和接口在同一目录下
+ -->
+<mapper namespace="com.zm.system.mapper.UserMapper">
+	<!-- =============映射关系标签=============
+	属性type:写po类的包名类名，由于之前定义了po类的别名，这里就写这个别名
+	属性id：是这个映射标签的唯一标识
+	id标签是查询结果集中的唯一标识
+	属性column：查询出来的列名
+	属性property：是po类里所指定的列名
+	通常会在原列名后面加下划线，这是固定的，这里就是id后面_
+	 -->
+	<resultMap type="com.zm.system.po.User" id="userMap">
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="mobile" property="mobile"/>
+		<result column="city" property="city"/>
+		<result column="carBrand" property="carBrand"/>
+		<result column="carType" property="carType"/>
+		<result column="buyInterest" property="buyInterest"/>
+		<result column="sex" property="sex"/>
+		<result column="createTime" property="createTime"/>
+		
+		
+		<!-- 引入Zm_admin.xml文件中的映射信息 
+			 property表示User类的关联属性
+			 resultMap表示引入Zm_admin.xml文件的映射类型
+		-->
+		<association property="admin" resultMap="com.zm.system.mapper.Zm_adminMapper.userinfoMap"/>
+	</resultMap>
+	<!-- ==================定义sql片段==============
+	sql:是sql片段标签
+	属性id是该片段的唯一标识
+	 -->
+	<sql id="zd">
+		id,name,mobile,city,carBrand,carType,buyInterest,sex,createTime
+	</sql>
+	<!-- 增删改查标签里的id:一定要和接口里对应的方法名一致，
+		 resultMap输出类型里写映射标签里的id 
+		 parameterType：输入类型，规范输入数据类型，指明查询时使用的参数类型-->
+	
+	
+	<!-- 查询用户列表   ok-->
+	<select id="userList" resultMap="userMap" parameterType="com.zm.system.po.User">
+		<!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+		select <include refid="zd"></include> from user
+	</select>
+	
+	<!-- 添加用户信息    ok -->
+	<insert id="add" parameterType="com.zm.system.po.User">
+		insert into user(<include refid="zd"></include>) 
+		values(#{id},#{name},#{mobile},#{city},#{carBrand},#{carType},#{buyInterest},#{sex},#{createTime})
+	</insert>
+	
+	<!-- 取得记录的总数  ok -->  
+	<select id="getAllRecord" resultType="long">  
+	  select count(*) from user 
+	</select> 
+	<!-- 按城市查询总记录数 -->
+	<select id="getAllRecordBycity" parameterType="int" resultType="long"> 
+		select count(*) from user where city=#{city}
+	</select>
+	<!-- 按日期查询总记录数 -->
+	<select id="getAllRecordByDate" parameterType="string" resultType="long">
+		select count(*) from user where createTime like concat(concat('%',#{createTime}),'%') 
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	<!-- 超级管理员分页查询所有客户信息   ok-->
+	<select id="selectAll" resultMap="userMap">
+		select u.id,u.name,u.mobile,u.sex,u.carBrand,u.carType,u.buyInterest,u.city,u.createTime,z.zm_city 
+			from user u inner join zm_admin z 
+			on u.city = z.zm_id 
+			ORDER BY u.id ASC
+			limit #{start},#{pageSize}
+			  
+	</select>
+	
+	<!-- 管理员按地区分页SQL语句  ok  -->  
+	<select id="findAll" resultMap="userMap">  
+	 <!--  select * from user limit #{start},#{pageSize}  -->  
+	  select u.id,u.name,u.mobile,u.sex,u.carBrand,u.carType,u.buyInterest,u.city,u.createTime,z.zm_city 
+			from user u inner join zm_admin z 
+			on u.city = z.zm_id 
+			and z.zm_city =#{city}
+			ORDER BY u.id ASC
+			limit #{start},#{pageSize}  
+	</select>  
+	
+	
+	 <!--    超级管理员根据城市名称分页模糊查询 -->
+	<select id="selectCity" resultMap="userMap" >
+		select u.id,u.name,u.mobile,u.sex,u.carbrand,u.cartype,u.buyinterest,u.city,u.createTime,z.zm_city 
+		  from user u inner join zm_admin z
+		  on u.city = z.zm_id 
+		  and z.zm_city  like concat(concat('%',#{city}),'%')  
+		  order by u.id asc
+		  limit #{start},#{pageSize} 	 
+	</select> 
+	
+	
+	<!-- 超级管理员按日期查询分页 -->
+	<select id="selectDate" resultMap="userMap" >
+		select u.id,u.name,u.mobile,u.sex,u.carbrand,u.cartype,u.buyinterest,u.city,u.createTime,z.zm_city 
+		  from user u inner join zm_admin z
+		  on u.city = z.zm_id 
+		  and u.createTime  like concat(concat('%',#{createTime}),'%')  
+		  order by u.id asc
+		  limit #{start},#{pageSize} 	 
+	</select> 
+	
+	
+	
+	
+	
+	
+</mapper>
+
+
+
+

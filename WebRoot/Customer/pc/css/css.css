@@ -1,0 +1,29 @@
+
+
+.RForm {	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px}
+.RForm DT {	LINE-HEIGHT: 23px}
+.RformB {	PADDING-LEFT: 10px}
+.blk_29 {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; OVERFLOW: hidden; PADDING-TOP: 10px;  ZOOM: 1; POSITION: relative;}
+.blk_29 .LeftBotton {	BACKGROUND:url(../images/LRBtn.png) no-repeat; LEFT: 0px; FLOAT: left; WIDTH: 36px; CURSOR: pointer; POSITION: absolute; TOP: 50px; HEIGHT: 34px; }
+.blk_29 .RightBotton {	RIGHT: -5px; BACKGROUND: url(../images/LRBtn.png) -60px 0px no-repeat ; FLOAT: right; WIDTH: 40px; CURSOR: pointer; POSITION: absolute; TOP: 50px; HEIGHT: 34px}
+
+.blk_29 .LeftBotton:hover {	BACKGROUND:url(../images/LRBtn.png) no-repeat 1px -34px; LEFT: 0px; FLOAT: left; WIDTH: 36px; CURSOR: pointer; POSITION: absolute; TOP: 50px; HEIGHT: 34px; }
+.blk_29 .RightBotton:hover{RIGHT: -5px; BACKGROUND: url(../images/LRBtn.png) -60px -34px no-repeat; 
+	FLOAT: right; WIDTH: 40px; CURSOR: pointer; POSITION: absolute; TOP: 50px; HEIGHT: 34px;}
+
+.blk_29 .Cont {	MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 988px; PADDING-TOP: 5px}
+.blk_29 .box {	FLOAT: left; WIDTH: 155px; TEXT-ALIGN: center;  height:100px; border: 1px solid #DDDDDD; margin-left: 20px;}
+.blk_29 .box IMG { DISPLAY: block; height: 53px; width: 144px; padding-top:20px; }
+/*.blk_29 .box A:hover IMG {	BORDER-RIGHT: #5385cc 1px solid; BORDER-TOP: #5385cc 1px solid; BORDER-LEFT: #5385cc 1px solid; BORDER-BOTTOM: #5385cc 1px solid}*/
+.blk_29 .box P {	MARGIN: 6px auto 0px; WIDTH: 97px; LINE-HEIGHT: 20px}
+.rollphotos {	MARGIN-TOP: 10px;WIDTH: 988px;}
+.partC {	MARGIN-TOP: 10px; OVERFLOW: auto; WIDTH: 950px;}
+.partC .PC_left {	OVERFLOW: auto; WIDTH: 470px;}
+.partC .PC_right {	OVERFLOW: auto; WIDTH: 470px;}
+.partC .PC_left {	FLOAT: left;}
+.partC .PC_right {	FLOAT: right;}
+.PT_mix {	BORDER-RIGHT: #a2d1ff 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #a2d1ff 0px solid; PADDING-LEFT: 0px; BACKGROUND: #f3fbfe; PADDING-BOTTOM: 10px; OVERFLOW: auto; BORDER-LEFT: #a2d1ff 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #a2d1ff 1px solid;}
+.PhoTxt {	MARGIN-TOP: 10px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; OVERFLOW: auto; WIDTH: 220px;}
+.PhoTxt IMG {	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 3px; BACKGROUND: #fff; FLOAT: left; PADDING-BOTTOM: 3px; BORDER-LEFT: #ccc 1px solid; MARGIN-RIGHT: 5px; PADDING-TOP: 3px; BORDER-BOTTOM: #ccc 1px solid;}
+.PhoTxt H1 {	FONT-WEIGHT: bold; FONT-SIZE: 12px; LINE-HEIGHT: 23px;}
+.PhoTxt P {	COLOR: #545454; LINE-HEIGHT: 20px;}

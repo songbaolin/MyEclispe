@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ==================代理方式=================
+由mapper标签开始，由/mapper结束，可以把它想成一个空间，是映射文件
+属性namespace：空间名，主要在代理中使用。这个namespace是唯一的。
+这里把mapper标签和接口联系在一起了，namespace=写接口路径，映射文件要和接口在同一目录下
+ -->
+<mapper namespace="com.zm.system.mapper.CityMapper">
+	<!-- =============映射关系标签=============
+	属性type:写po类的包名类名，由于之前定义了po类的别名，这里就写这个别名
+	属性id：是这个映射标签的唯一标识
+	id标签是查询结果集中的唯一标识
+	属性column：查询出来的列名
+	属性property：是po类里所指定的列名
+	通常会在原列名后面加下划线，这是固定的，这里就是id后面_
+	 -->
+	<resultMap type="com.zm.system.po.City" id="cityMap">
+		<result column="id" property="id"/>
+		<result column="cityName" property="cityName"/>
+		<result column="cityUrl" property="cityUrl"/>
+	</resultMap>
+	<!-- ==================定义sql片段==============
+	sql:是sql片段标签
+	属性id是该片段的唯一标识
+	 -->
+	<sql id="zd">
+		id,cityName,cityUrl
+	</sql>
+	
+	
+	<!-- 查询用户列表   ok-->
+	<select id="select" resultMap="cityMap" parameterType="string">
+		select <include refid="zd"></include> from city where cityName=#{city}
+	</select>
+	
+	<!-- 添加用户信息    ok -->
+	<insert id="addcity"  parameterType="com.zm.system.po.City" >
+		insert into city(<include refid="zd"></include>) 
+		values(#{id},#{cityName},#{cityUrl})
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
+
+
+
+

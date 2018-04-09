@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ==================代理方式=================
+由mapper标签开始，由/mapper结束，可以把它想成一个空间，是映射文件
+属性namespace：空间名，主要在代理中使用。这个namespace是唯一的。
+这里把mapper标签和接口联系在一起了，namespace=写接口路径，映射文件要和接口在同一目录下
+ -->
+<mapper namespace="com.zm.system.mapper.CustomerMapper">
+	<!-- =============映射关系标签=============
+	属性type:写po类的包名类名，由于之前定义了po类的别名，这里就写这个别名
+	属性id：是这个映射标签的唯一标识
+	id标签是查询结果集中的唯一标识
+	属性column：查询出来的列名
+	属性property：是po类里所指定的列名
+	通常会在原列名后面加下划线，这是固定的，这里就是id后面_
+	 -->
+	<resultMap type="com.zm.system.po.Customer" id="customerMap">
+		<result column="c_id" property="c_id"/>
+		<result column="c_name" property="c_name"/>
+		<result column="c_mobile" property="c_mobile"/>
+		<result column="c_city" property="c_city"/>
+		<result column="c_carBrand" property="c_carBrand"/>
+		<result column="c_carType" property="c_carType"/>
+		<result column="c_address" property="c_address"/>
+		<result column="c_sex" property="c_sex"/>
+		<result column="c_createTime" property="c_createTime"/>
+		
+	</resultMap>
+	<!-- ==================定义sql片段==============
+	sql:是sql片段标签                           
+	属性id是该片段的唯一标识
+	 -->
+	<sql id="zd">
+		c_id,c_name,c_mobile,c_city,c_carBrand,c_carType,c_address,c_sex,c_createTime
+	</sql>
+	<!-- 增删改查标签里的id:一定要和接口里对应的方法名一致，
+		 resultMap输出类型里写映射标签里的id 
+		 parameterType：输入类型，规范输入数据类型，指明查询时使用的参数类型-->
+	
+	<!-- 添加用户信息    ok -->
+	<insert id="add" parameterType="com.zm.system.po.Customer">
+		insert into customer(<include refid="zd"></include>) 
+		values(#{c_id},#{c_name},#{c_mobile},#{c_city},#{c_carBrand},#{c_carType},#{c_address},#{c_sex},#{c_createTime})
+	</insert>
+	
+	
+	<!-- 查询所有电商客户信息总数 -->
+	<select  id="getAllRecord" resultType="long">
+		select count(*) from customer
+	</select>
+	<!-- 按日期查询总记录数 -->
+	<select id="getAllRecordByDate" parameterType="string" resultType="long">
+		select count(*) from customer where c_createTime like concat(concat('%',#{createTime}),'%') 
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 超级管理员分页查所有电商信息 -->
+	<select id="selectAll" resultMap="customerMap">
+		select c_id,c_name,c_mobile,c_sex,c_city,c_carBrand,c_carType,c_address,c_createTime
+			from customer
+			limit #{start},#{pageSize}
+	</select>
+		<!-- 超级管理员按日期查询分页 -->
+	<select id="selectDate" resultMap="customerMap" >
+		select c_id,c_name,c_mobile,c_sex,c_city,c_carBrand,c_carType,c_address,c_createTime
+		  from customer 
+		  where c_createTime  like concat(concat('%',#{createTime}),'%')  
+		  order by c_id asc
+		  limit #{start},#{pageSize} 	 
+	</select> 
+	
+	
+	
+	
+
+	
+	
+	
+</mapper>
+
+
+
+

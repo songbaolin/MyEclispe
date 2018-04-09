@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+/*车型*/
+.dj-main{background:url(./images/spw8.jpg) no-repeat bottom center; background-size:100%;font-size: 62.5%; }
+.dj{width:98%; height:auto; overflow:hidden; padding:0px 0px 5px; margin:0px auto;}
+.dj-m{ width:100%; margin:0px auto 10px; height:auto; float:left;text-align:center; color:#000;}
+.dj-m1{ width:95%; margin:0px auto; background-color:#fff;  }
+.dj-m .sp1{ font-size:1.8em; font-weight:bold;  line-height:45px;}
+.dj-m .sp2{ font-size:1.4em; line-height:30px;  padding:0px 0px 15px; display:block;}
+.dj-m .sp3{ width:75%; max-width:200px; background:url(../images/sp38.png) no-repeat; background-size:100% 100%; color:#fff; text-align:center; line-height:32px; font-weight:bold; font-size:1.8em;  position:absolute; bottom:-16px; right:0px;}
+.dj-m .sp4{ width:100%; height:auto;position:relative; display:block; margin-bottom:8%;}
+
+
+/*底部*/
+.h{height:6em;}
+.footer{width:100%; max-width:640px; position:fixed;bottom:0px;clear: both;z-index: 22222; /*background:#c41228;*/
+  background: -webkit-linear-gradient(#ff10a2, #fa2b4b); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#ff10a2, #fa2b4b); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#ff10a2, #fa2b4b); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#ff10a2, #fa2b4b); /* 标准的语法 */
+}
+.footer a{width:33.33%;float:left;text-align:center;display: initial; border-left:1px solid #b6061c; padding:1em 0;}
+.footer a p{font-size:1.3em; color: #ff0; line-height:25px; display:block; width:80%; margin:auto;}
+.footer a img{ display:block; margin:0px auto;}
+.footer a:hover{background:#ff4949;}
+
+/*通用*/
+::-webkit-input-placeholder { color:#7c7b7b; }
+::-moz-placeholder { color:#7c7b7b; } /* firefox 19+ */
+:-ms-input-placeholder { color:#7c7b7b; } /* ie */
+input:-moz-placeholder { color:#7c7b7b; }
+/*车型选择框*/
+.ppsl{text-align:left; display:none; background-color:#f5f5f5; border:2px #bdc0c1 solid; padding:5px; font-size:1.5em;}
+.ppsl p{ height:35px; line-height:35px; background-color:#000000; color:#FFFFFF; margin:5px auto;}
+
+/*车型选择框*/
+.ppsl{text-align:left; display:none; background-color:#f5f5f5; border:2px #bdc0c1 solid; padding:5px; font-size:1.5em;}
+.ppsl p{ height:35px; line-height:35px; background-color:#000000; color:#FFFFFF; margin:5px auto;}
+
+/*公司名称*/
+.botto_gsname{width:100%; margin-top:5px; color:#000; line-height:35px; text-align:center;}
+
+
+@media screen and (min-width: 375px) {
+   .sp_bm0222{width:294px; font-size:1.6em;}
+   .sp_bm0223{font-size:1.2em;}
+   .sp_bm0224{font-size:1.6em;}
+   .sp_bm02241{font-size:1.4em; }
+   .sp_bm02211{ font-size:1.2em;}
+   .box{ height:310px;}
+}
+
+@media screen and (min-width: 414px) {
+  .sp_bm0222{width:328px; font-size:1.8em;}
+  .sp_bm0223{font-size:1.4em;}
+  .sp_bm02211{font-size:1.4em;}
+  .box{ height:330px;}
+}
+@media screen and (min-width: 464px) {
+  .box{ height:350px;}
+}
+@media screen and (min-width: 514px) {
+  .box{ height:370px;}
+}
+@media screen and (min-width: 564px) {
+  .box{ height:390px;}
+}
+@media screen and (min-width: 614px) {
+  .box{ height:400px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
